@@ -1,9 +1,23 @@
+let maxWidth = 800
+let maxHeight = 1200
+
 let walls = []
 let ray
 let particle
 
 function setup() {
-  createCanvas(800, 1200)
+  let canvasWidth = floor(windowWidth * 0.8)
+  let canvasHeight = floor(windowHeight * 0.9)
+
+  if (canvasWidth > maxWidth) {
+    canvasWidth = maxWidth
+  }
+
+  if (canvasHeight > maxHeight) {
+    canvasHeight = maxHeight
+  }
+
+  createCanvas(canvasWidth, canvasHeight)
 
   for (let i = 0; i < 5; i++) {
     let x1 = random(width)
