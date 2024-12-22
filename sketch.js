@@ -1,6 +1,11 @@
 let maxWidth = 800
 let maxHeight = 1200
 
+let wall = false
+
+let userWallStart = [0, 0]
+let userWallEnd = [0, 0]
+
 let walls = []
 let ray
 let particle
@@ -18,14 +23,6 @@ function setup() {
   }
 
   createCanvas(canvasWidth, canvasHeight)
-
-  for (let i = 0; i < 5; i++) {
-    let x1 = random(width)
-    let x2 = random(width)
-    let y1 = random(height)
-    let y2 = random(height)
-    walls.push(new Boundary(x1, y1, x2, y2))
-  }
 
   walls.push(new Boundary(0, 0, width, 0))
   walls.push(new Boundary(width, 0, width, height))
@@ -50,4 +47,21 @@ function draw() {
   
   particle.castRays(walls)
 
+}
+
+function mousePressed() {
+  if (wall == true) {
+    userWallEnd = [mouseX, mouseY]
+    walls.push(new Boundary(userWallStart[0], userWallStart[1], userWallEnd[0], userWallEnd[1]))
+
+    wall = false
+    return
+  }
+
+  if (wall == false) {
+    userWallStart = [mouseX, mouseY]
+
+    wall = true
+    return
+  }
 }

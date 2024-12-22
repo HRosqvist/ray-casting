@@ -2,7 +2,7 @@ class Particle {
   constructor() {
     this.position = createVector(width / 2, height / 2)
     this.rays = []
-    for (let i = 0; i < 360; i += 5) {
+    for (let i = 0; i < 360; i += 1) {
       this.rays.push(new Ray(this.position, radians(i)))
     }
   }
@@ -32,7 +32,7 @@ class Particle {
       }
 
       if (closest) {
-        fill(255, 100)
+        stroke(255, 75)
         line(this.position.x, this.position.y, closest.x, closest.y)
       }
     }
