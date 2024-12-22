@@ -3,6 +3,8 @@ let maxHeight = 1200
 
 let wall = false
 
+let userClick
+
 let userWallStart = [0, 0]
 let userWallEnd = [0, 0]
 
@@ -34,6 +36,7 @@ function setup() {
 
 function draw() {
   background(0)
+  text('Create walls by clicking on two points', 0, 20)
 
   for (let wall of walls) {
     wall.show()
@@ -46,6 +49,11 @@ function draw() {
   }
   
   particle.castRays(walls)
+
+  if (wall == true) {
+    stroke(255)
+    line(userWallStart[0], userWallStart[1], mouseX, mouseY)
+  }
 
 }
 
